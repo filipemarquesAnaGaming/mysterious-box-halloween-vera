@@ -28,6 +28,7 @@ interface BoxRollerProps {
 const initialAnimation = -90;
 
 const BoxRoller: React.FC<BoxRollerProps> = ({ isRolling, onComplete }) => {
+  const { currentUserId } = useGame();
   const [animationX, setAnimationX] = useState<number>(initialAnimation);
   const [transitionDuration, setTransitionDuration] = useState<number>(2.5);
   const [selectedBox, setSelectedBox] = useState<Box | null>(null);
@@ -129,8 +130,9 @@ const BoxRoller: React.FC<BoxRollerProps> = ({ isRolling, onComplete }) => {
       <CongratulationsModal
         open={openModal}
         onClose={() => setOpenModal(false)}
-        userId="1"
-        message="Teste"
+        userId={currentUserId}
+        prize={selectedBox?.gameURL || ""}
+        message={selectedBox?.prizeLabel}
       />
     </>
   );
@@ -140,7 +142,6 @@ export const Game = () => {
   // States
   const [isRolling, setIsRolling] = useState<boolean>(false);
   const [selectedBox, setSelectedBox] = useState<Box | null>(null);
-
   // Hooks
   const { currentUserId, setAlreadyPlay, setMinigameId } = useGame();
   const { setShowUserPlayedModal, setShowModalShop } = useModal();

@@ -9,16 +9,31 @@ interface CongratulationsModalProps {
   onClose: () => void;
   message?: string;
   userId: string;
+  prize: string;
 }
 
 export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
   open,
   message,
   userId,
+  prize,
 }) => {
   const { setShowUserPlayedModal } = useModal();
-
   const [show, setShow] = useState(false);
+
+  // const prizeImages: Record<string, string> = {
+  //   "2 giros no AVIATOR!": "/Games/prizes/aviator.png",
+  //   "10 giros no GATES OF OLYMPUS!": "/Games/prizes/gates.png",
+  //   "5 giros no MASTER JOKERS!": "/Games/prizes/joker.png",
+  //   "Não foi dessa vez!": "/Games/prizes/lose.png",
+  //   "10 giros no FORTUNE RABBIT!": "/Games/prizes/rabbit.png",
+  //   "2 giros no Super 7S!": "/Games/prizes/super7s.png",
+  //   "3 giros no TIGRE SORTUDO!": "/Games/prizes/tigresortudo.png",
+  //   "10 giros no TOURO SORTUDO!": "/Games/prizes/tourosortudo.png",
+  //   "1000 reais em SALDO REAL!": "/Games/prizes/money.png",
+  //   "10 reais em SALDO REAL!": "/Games/prizes/tourosortudo.png",
+  // };
+  // const imageUrl = prizeImages[message || ""] || "/Games/prizes/lose.png";
 
   useEffect(() => {
     if (open) {
@@ -66,43 +81,63 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
       }`}
     >
       <div
-        className={`bg-[#0A192A] rounded-[16px] border border-[#1B3655] shadow-[0px_2.283px_0px_0px_#1B3655] px-6 py-4 flex flex-col items-center w-full max-w-[370px] relative overflow-auto gap-2 transform transition-all duration-200 ${
+        className={`bg-[#37194E] rounded-[16px] border border-[#1A3A2B] px-6 pt-36 flex flex-col items-center w-full max-w-[370px] relative overflow-auto gap-2 transform transition-all duration-200 ${
           open ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
         style={{
-          background: `linear-gradient(rgba(10,25,42,0.7), rgba(10,25,42,0.7)), url('pop-up-bg.svg') center/cover no-repeat, #0A192A`,
+          background: `
+  url('pop-up-bg.svg') -277.894px -81.568px / 250.213% 100% no-repeat,
+  #37194E
+  `,
+          boxShadow: "0 2.283px 0 0 #1A3A2B",
         }}
       >
         <Image
-          src="/Games/cases/box5.png"
+          src="/close.png"
+          alt="Fechar"
+          width={28}
+          height={28}
+          quality={100}
+          className=" w-8 items-center absolute top-8 right-8 cursor-pointer"
+        />
+
+        <Image
+          src={prize}
           alt="Parabéns"
-          width={200}
-          height={200}
+          width={450}
+          height={450}
           className=" items-center justify-center"
         />
 
         <h2 className="text-2xl text-center font-bold text-[#E8EDF6] mb-4 mt-2">
-          Parabéns! Você ganhou <br />
-          <span className="text-[#85C2F4]">{message || ""}.</span>
+          {message === "Não foi dessa vez!" ? (
+            <span className="text-[#8FC6A5]">{message || ""}</span>
+          ) : (
+            <>
+              Parabéns! Você ganhou <br />
+              <span className="text-[#8FC6A5]">{message || ""}.</span>
+            </>
+          )}
         </h2>
-        <div className="bg-[#1B3655] rounded-md px-3 py-2 mb-2 w-full">
-          <p className="text-[#F4F7FB] text-sm font-thin text-center m-0">
-            Faça um{" "}
-            <span className="font-semibold">depósito mínimo de R$30</span>{" "}
-            <br /> e abra o jogo para começar
-          </p>
-        </div>
-        <button
-          onClick={handleRedirect}
-          className="w-full mt-2 rounded-[8px] px-4 py-3 text-[#E8EDF6] font-bold shadow-[0_3px_0_0_#003681] bg-gradient-to-b from-[#01B3F9] to-[#0481DB] hover:from-[#0481DB] hover:to-[#01B3F9] transition"
+        <div
+          className="w-full mt-2 items-center justify-center flex gap-3 cursor-pointer hover:opacity-90 rounded-[8px] px-4 py-2 text-black font-bold bg-[#00E054] transition"
+          style={{ boxShadow: "0 2px 0 0 #4BFB8D inset, 0 2px 0 0 #258248" }}
         >
-          Resgatar prêmio!
-        </button>
+          <button onClick={handleRedirect}>Continuar</button>
+
+          <Image
+            src="/arrow-right.svg"
+            alt="Cassino"
+            className="w-4"
+            width={370}
+            height={100}
+          />
+        </div>
 
         <Image
-          src="/frameFooter.svg"
+          src="/Theme/modals/vera.png"
           alt="Cassino"
-          className="w-full w-100 mt-2"
+          className="w-full w-100 mt-4 mb-6"
           width={370}
           height={100}
         />

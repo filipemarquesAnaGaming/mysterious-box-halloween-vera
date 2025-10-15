@@ -11,9 +11,9 @@ export const Cases = () => {
         width={200}
         height={200}
         quality={100}
-        className="mt-24 w-[300px] h-auto"
+        className="mt-36 w-[300px] h-auto"
       />
-      <div className="flex-col w-full h-full flex items-center -mt-8">
+      <div className="flex-col w-full h-full flex items-center -mt-10">
         <Game />
       </div>
     </GameContainer>
