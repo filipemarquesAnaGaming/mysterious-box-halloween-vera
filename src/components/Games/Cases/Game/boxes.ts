@@ -39,7 +39,7 @@ export const boxes: Box[] = [
   {
     id: 4,
     boxImage: "/Games/cases/box4.png",
-    probability: 100,
+    probability: 0,
     distance: 1738,
     gameURL: "/Games/prizes/lose.png",
     prizeLabel: "Não foi dessa vez!",
