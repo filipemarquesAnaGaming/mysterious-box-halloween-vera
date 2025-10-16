@@ -63,7 +63,7 @@ export const GameListClientComponent = ({
 
     // Redirect if missing required parameters
     if (!userId) {
-      router.replace("/?id=undefined");
+      router.replace("/?id=undefined&userId=undefined");
       return;
     }
 

@@ -12,10 +12,7 @@ export async function userCanPlay(
   }
 
   const minigamesIds = new Set([
-    "67ee8896d2b69d36906a3157", // Roulette
-    "67ee88b25f31c01de3f33e32", // Cases
-    "67ee88cd24db8202d0e11ff8", // Scratch
-    "67ee88d90519e7f0c9408919", // Casino Roulette
+    "67ee88b25f31c01de3f33e32", // halloween
   ]);
 
   const minigamesPlayed = user?.minigames_played || [];

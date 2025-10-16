@@ -10,6 +10,7 @@ interface CongratulationsModalProps {
   message?: string;
   userId: string;
   prize: string;
+  bonusCode: string;
 }
 
 export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
@@ -18,6 +19,7 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
   userId,
   prize,
   onClose,
+  bonusCode,
 }) => {
   const { setShowUserPlayedModal } = useModal();
   const [show, setShow] = useState(false);
@@ -37,7 +39,7 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
     const payload: IAddMinigameToUserAndSendBonus = {
       userId: userId,
       minigameId: "68a87de73e8c5c3f1432f4b7",
-      bonusCode: "100974",
+      bonusCode,
     };
 
     try {
@@ -61,7 +63,7 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
       }`}
     >
       <div
-        className={`bg-[#37194E] rounded-[16px] border border-[#1A3A2B] px-6 py-8 flex flex-col items-center justify-between w-full max-w-[370px] h-full max-h-[600px] relative overflow-hidden transform transition-all duration-200 ${
+        className={`bg-[#37194E] rounded-[16px] border border-[#1A3A2B] px-6 py-8 flex flex-col items-center justify-between w-full max-w-[370px] h-full max-h-[590px] relative overflow-hidden transform transition-all duration-200 ${
           open ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
         style={{
@@ -79,18 +81,18 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
           height={28}
           quality={100}
           onClick={onClose}
-          className="w-8 absolute top-6 right-6 cursor-pointer hover:opacity-80 transition"
+          className="w-8 absolute top-6 right-6 cursor-pointer hover:opacity-80 transition z-10"
         />
 
         <div className="flex flex-col items-center justify-center flex-1 w-full">
-          <div className="relative w-full max-w-[450px] sm:max-w-[260px] aspect-square">
+          <div className="relative w-full max-w-[430px] sm:max-w-[260px] aspect-square">
             <Image
               src={prize}
               alt="Prêmio"
               fill
-              className="object-contain"
+              className="object-contain mt-3"
               quality={100}
-              sizes="(max-width: 768px) 60vw, 450px"
+              sizes="(max-width: 768px) 60vw, 430px"
               priority
             />
           </div>
@@ -102,7 +104,7 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
             ) : (
               <>
                 Parabéns! Você ganhou <br />
-                <span className="text-[#8FC6A5]">{message || ""}.</span>
+                <span className="text-[#8FC6A5]">{message || ""}</span>
               </>
             )}
           </h2>
@@ -124,7 +126,7 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
 
           <Image
             src="/Theme/modals/vera.png"
-            alt="Cassino"
+            alt="VeraBet"
             width={370}
             height={100}
             className="w-[85%] mt-6"

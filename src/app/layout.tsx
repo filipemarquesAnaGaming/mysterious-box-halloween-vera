@@ -22,7 +22,7 @@ import { UserPlayed } from "@/components/Theme/Modals/UserPlayed";
 import { SpinsShop } from "@/components/Theme/Modals/SpinsShop";
 
 export const metadata: Metadata = {
-  title: "Minigames Registro v4",
+  title: "Halloween - VeraBet",
   description: "",
 };
 

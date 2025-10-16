@@ -132,6 +132,7 @@ const BoxRoller: React.FC<BoxRollerProps> = ({ isRolling, onComplete }) => {
         onClose={() => setOpenModal(false)}
         userId={currentUserId}
         prize={selectedBox?.gameURL || ""}
+        bonusCode={selectedBox?.cactus_bonus_name_ || ""}
         message={selectedBox?.prizeLabel}
       />
     </>
@@ -158,8 +159,6 @@ export const Game = () => {
   const handleRollComplete = async (box: Box) => {
     // setIsRolling(false);
     setSelectedBox(box);
-    setMinigameId("67ee88b25f31c01de3f33e32");
-
     const canPlay = await userCanPlay(currentUserId);
 
     if (canPlay.isBlocked) {
