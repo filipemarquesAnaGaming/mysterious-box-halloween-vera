@@ -12,7 +12,7 @@ export async function userCanPlay(
   }
 
   const minigamesIds = new Set([
-    "67ee88b25f31c01de3f33e32", // halloween
+    "68f2944d1cfd484dcb2dee1a", // halloween Verabet 2025
   ]);
 
   const minigamesPlayed = user?.minigames_played || [];

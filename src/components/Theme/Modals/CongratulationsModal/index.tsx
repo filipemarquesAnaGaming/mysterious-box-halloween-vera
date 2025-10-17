@@ -37,8 +37,8 @@ export const CongratulationsModal: React.FC<CongratulationsModalProps> = ({
 
   async function handleRedirect() {
     const payload: IAddMinigameToUserAndSendBonus = {
-      userId: userId,
-      minigameId: "68a87de73e8c5c3f1432f4b7",
+      userId,
+      minigameId: "68f2944d1cfd484dcb2dee1a",
       bonusCode,
     };
 
